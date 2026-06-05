@@ -1,11 +1,12 @@
-# CCwatch - Claude Code Session Manager
+# CCwatch - Claude Code Manager
 
-> Claude Code 会话管理工具 — 命令行 + 图形界面双版本
+> Claude Code 项目管理工具 — 命令行 + 图形界面双版本
 
 > ⚠️ **非官方社区工具**，与 Anthropic 无关联。
 
 ## 功能
 
+- **项目管理** — 按项目浏览会话、规则、记忆文件（GUI v2.0）
 - **会话列表** — 按项目分组显示所有会话，按时间排序
 - **搜索** — 按项目名或会话 ID 模糊搜索
 - **重命名** — 给会话起个好记的名字
@@ -13,6 +14,8 @@
 - **导出** — 单条或批量导出会话为 `.jsonl` 文件
 - **清理** — 删除 7 天前的旧会话（含确认提示）
 - **统计** — 按项目维度显示会话数量、大小、时间分布
+- **规则管理** — 浏览和编辑 CLAUDE.md（全局/项目级）
+- **记忆管理** — 新建、浏览、删除 memory 文件
 - **MCP 服务器** — 显示已配置的 MCP 服务器及中文说明（GUI）
 - **Skills** — 显示已安装的 Skills 及中文说明（GUI）
 
@@ -22,7 +25,7 @@
 |------|------|------|
 | Bash CLI | `claude-session-manager.sh` | 原始脚本，需 Git Bash |
 | Python CLI | `claude_session_manager.py` | 跨平台，支持交互菜单 |
-| GUI | `claude_session_gui.py` | CustomTkinter 图形界面 |
+| GUI | `claude_session_gui.py` | CustomTkinter 图形界面，v2.0 支持项目管理 |
 
 ## 使用
 
@@ -61,6 +64,14 @@ python claude_session_gui.py
 ```
 
 或直接双击 `claude-session-gui.exe`。
+
+## v2.0 更新
+
+- 新增**项目管理**面板，以项目为中心管理会话、规则、记忆
+- 新增**规则**子标签，浏览和编辑 CLAUDE.md（全局/项目级）
+- 新增**记忆**子标签，新建、浏览、删除 memory 文件
+- 编辑功能调用系统默认编辑器（非内嵌），避免并发冲突
+- 会话面板保留，支持全局搜索
 
 ## 构建 exe
 
