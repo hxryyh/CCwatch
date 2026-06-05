@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Claude Code Manager - Desktop GUI v2.0 (项目 + 会话 + 规则 + 记忆 + MCP + Skills)"""
+"""Claude Code Manager - Desktop GUI v1.1 (项目 + 会话 + 规则 + 记忆 + MCP + Skills)"""
 
 import os
 import sys
