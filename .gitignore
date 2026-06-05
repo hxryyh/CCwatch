@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.spec
+build/
+dist/
+*.egg-info/
+
+# PyInstaller
+*.exe
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Session data (user-specific)
+session-names.txt
