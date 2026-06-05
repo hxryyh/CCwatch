@@ -76,7 +76,13 @@ def iso_to_date(ts: str) -> str:
 
 
 def project_display_name(dirname: str) -> str:
-    return dirname.replace("--", "/").lstrip("/")
+    # Decode: C--Users-Dell → C:/Users/Dell
+    # ':' → '-', '/' → '--'
+    name = dirname.replace("--", "/")
+    # Restore drive letter colon: "C/" → "C:/"
+    if len(name) >= 2 and name[1] == "/" and name[0].isalpha():
+        name = name[0] + ":" + name[1:]
+    return name
 
 
 def parse_jsonl(filepath: Path) -> list:
@@ -1168,7 +1174,7 @@ class ProjectsPanel(ctk.CTkFrame):
             self.project_rows[idx].configure(fg_color=COLORS["surface2"])
 
         self.proj_name_label.configure(text=project["display_name"])
-        self._switch_sub_tab("sessions")
+        self._switch_sub_tab("sessions", force=True)
 
     def _show_global_rules(self):
         """Show global CLAUDE.md."""
@@ -1199,8 +1205,8 @@ class ProjectsPanel(ctk.CTkFrame):
 
     # --- Sub-tab switching ---
 
-    def _switch_sub_tab(self, key):
-        if self.current_sub_tab == key and self.sub_panels[key].winfo_viewable():
+    def _switch_sub_tab(self, key, force=False):
+        if not force and self.current_sub_tab == key and self.sub_panels[key].winfo_viewable():
             return
         self.current_sub_tab = key
         for k, btn in self.sub_tab_buttons.items():
